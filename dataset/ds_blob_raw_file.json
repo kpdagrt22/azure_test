@@ -1,0 +1,29 @@
+{
+	"name": "ds_blob_raw_file",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Storage_AdfProject",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "@dataset().fileName",
+				"folderPath": "@dataset().folderPath",
+				"container": "raw"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "CREATE SCHEMA [tutorial1_sink]:",
+				"type": "String"
+			}
+		]
+	}
+}
