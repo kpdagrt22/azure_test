@@ -1,0 +1,24 @@
+{
+	"name": "ds_blob_staging_folder",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Storage_AdfProject",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "@dataset().fileName",
+				"folderPath": "@dataset().folderPath",
+				"container": "staging"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
