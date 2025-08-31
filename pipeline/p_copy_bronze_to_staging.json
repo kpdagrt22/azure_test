@@ -1,0 +1,20 @@
+{
+	"name": "p_copy_bronze_to_staging",
+	"properties": {
+		"parameters": {
+			"sourceFolder": {
+				"type": "string"
+			},
+			"sourceFile": {
+				"type": "string"
+			},
+			"destFolder": {
+				"type": "string"
+			},
+			"runDate": {
+				"type": "string"
+			}
+		},
+		"annotations": []
+	}
+}
