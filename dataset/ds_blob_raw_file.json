@@ -10,8 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "@dataset().fileName",
-				"folderPath": "@dataset().folderPath",
+				"fileName": "customers.csv",
 				"container": "raw"
 			},
 			"columnDelimiter": ",",
