@@ -10,8 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "@dataset().fileName",
-				"folderPath": "@dataset().folderPath",
 				"container": "staging"
 			},
 			"columnDelimiter": ",",
