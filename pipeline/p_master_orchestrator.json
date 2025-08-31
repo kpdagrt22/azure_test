@@ -1,0 +1,26 @@
+{
+	"name": "p_master_orchestrator",
+	"properties": {
+		"parameters": {
+			"env": {
+				"type": "string",
+				"defaultValue": "default = dev"
+			},
+			"runDate": {
+				"type": "string",
+				"defaultValue": "default = @utcNow()"
+			},
+			"fileList": {
+				"type": "string",
+				"defaultValue": "customers.csv"
+			}
+		},
+		"variables": {
+			"runId": {
+				"type": "String",
+				"defaultValue": "@concat('run_', pipeline().RunId)"
+			}
+		},
+		"annotations": []
+	}
+}
