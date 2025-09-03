@@ -50,6 +50,25 @@
 					},
 					"isSequential": false
 				}
+			},
+			{
+				"name": "If Condition1",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "ForEach1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(item().name, 'process')",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"parameters": {
