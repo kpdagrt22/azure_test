@@ -36,7 +36,17 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [],
+				"userProperties": [
+					{
+						"name": "Dataset"
+					},
+					{
+						"name": "Field list"
+					},
+					{
+						"name": "Outp"
+					}
+				],
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "ds_blob_raw_file",
