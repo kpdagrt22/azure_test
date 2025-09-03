@@ -20,11 +20,17 @@
 						"additionalColumns": [
 							{
 								"name": "folderPath",
-								"value": "@pipeline().parameters.sourceFolder"
+								"value": {
+									"value": "@pipeline().parameters.sourceFolder",
+									"type": "Expression"
+								}
 							},
 							{
 								"name": "fileName",
-								"value": "@pipeline().parameters.sourceFile"
+								"value": {
+									"value": "@pipeline().parameters.sourceFile",
+									"type": "Expression"
+								}
 							}
 						],
 						"storeSettings": {
@@ -77,16 +83,20 @@
 		],
 		"parameters": {
 			"sourceFolder": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "''"
 			},
 			"sourceFile": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "''"
 			},
 			"destFolder": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "''"
 			},
 			"runDate": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "''"
 			}
 		},
 		"annotations": []
