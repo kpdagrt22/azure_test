@@ -1,6 +1,40 @@
 {
 	"name": "p_master_orchestrator",
 	"properties": {
+		"activities": [
+			{
+				"name": "Get Metadata1",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "ds_blob_raw_file",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						{
+							"value": "@pipeline().parameters.fileList",
+							"type": "Expression"
+						}
+					],
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			}
+		],
 		"parameters": {
 			"env": {
 				"type": "string",
