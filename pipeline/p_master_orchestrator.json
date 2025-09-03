@@ -3,9 +3,32 @@
 	"properties": {
 		"activities": [
 			{
+				"name": "p_copy_bronze_to_staging",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "p_copy_bronze_to_staging",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
 				"name": "Get Metadata1",
 				"type": "GetMetadata",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "p_copy_bronze_to_staging",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -20,10 +43,7 @@
 						"type": "DatasetReference"
 					},
 					"fieldList": [
-						{
-							"value": "@pipeline().parameters.fileList",
-							"type": "Expression"
-						}
+						"itemType"
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
