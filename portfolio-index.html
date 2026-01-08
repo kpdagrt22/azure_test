@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Prakash Kantumutchu - MLOps Engineer & AI/ML Architect. Production ML systems, LLMs, Azure cloud, and data engineering.">
+    <meta name="keywords" content="MLOps, AI/ML, Azure, LLMs, Data Engineering, Generative AI">
+    <meta name="author" content="Prakash Kantumutchu">
+    <meta property="og:title" content="Prakash Kantumutchu - MLOps & AI Engineer">
+    <meta property="og:description" content="Production-grade ML systems, LLMs, and cloud-native architecture">
+    <meta property="og:type" content="website">
+    
+    <title>Prakash Kantumutchu - MLOps & AI Engineer</title>
+    
+    <style>
+        /* ===== DESIGN SYSTEM ===== */
+        :root {
+            /* Colors */
+            --primary: #0F172A;
+            --accent: #3B82F6;
+            --secondary: #8B5CF6;
+            --bg-light: #F8FAFC;
+            --bg-white: #FFFFFF;
+            --text-primary: #1E293B;
+            --text-secondary: #64748B;
+            --border: #E2E8F0;
+            --success: #10B981;
+            --error: #EF4444;
+            
+            /* Typography */
+            --font-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --font-mono: 'Courier New', monospace;
+            
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            
+            /* Radius */
+            --radius: 8px;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-base);
+            color: var(--text-primary);
+            background: var(--bg-light);
+            line-height: 1.6;
+        }
+        
+        /* ===== TYPOGRAPHY ===== */
+        h1 { font-size: 3.5rem; font-weight: 700; line-height: 1.1; margin-bottom: var(--space-lg); }
+        h2 { font-size: 2rem; font-weight: 600; line-height: 1.2; margin-bottom: var(--space-md); }
+        h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: var(--space-md); }
+        p { margin-bottom: var(--space-md); color: var(--text-secondary); }
+        a { color: var(--accent); text-decoration: none; transition: all 0.2s; }
+        a:hover { text-decoration: underline; opacity: 0.8; }
+        
+        code { 
+            background: var(--bg-white);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+        
+        /* ===== LAYOUT ===== */
+        header {
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .header-content {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: var(--space-md) var(--space-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        nav {
+            display: flex;
+            gap: var(--space-lg);
+            align-items: center;
+        }
+        
+        nav a {
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        nav a.active {
+            color: var(--accent);
+            border-bottom: 2px solid var(--accent);
+        }
+        
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+        
+        section {
+            padding: var(--space-xl) 0;
+        }
+        
+        /* ===== HERO ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #1E3A8A 100%);
+            color: white;
+            padding: var(--space-xl) var(--space-lg);
+            text-align: center;
+        }
+        
+        .hero h1 {
+            color: white;
+            margin-bottom: var(--space-md);
+            font-size: 3.5rem;
+        }
+        
+        .hero .tagline {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: var(--space-lg);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: var(--space-lg);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #2563EB;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* ===== ABOUT ===== */
+        .about {
+            background: var(--bg-white);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: start;
+        }
+        
+        .about-text h2 {
+            color: var(--primary);
+        }
+        
+        .about-text p {
+            margin-bottom: var(--space-md);
+            line-height: 1.8;
+        }
+        
+        .highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+        
+        .highlight {
+            background: var(--bg-light);
+            padding: var(--space-md);
+            border-left: 4px solid var(--accent);
+            border-radius: 4px;
+        }
+        
+        .highlight-title {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        /* ===== EXPERIENCE ===== */
+        .experience {
+            background: var(--bg-light);
+        }
+        
+        .exp-timeline {
+            position: relative;
+            padding: var(--space-lg) 0;
+        }
+        
+        .exp-item {
+            background: var(--bg-white);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+            border-radius: var(--radius);
+            border-left: 4px solid var(--accent);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s;
+        }
+        
+        .exp-item:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(4px);
+        }
+        
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+            gap: var(--space-md);
+        }
+        
+        .exp-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .exp-date {
+            background: var(--accent);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        
+        .exp-company {
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: var(--space-md);
+        }
+        
+        .exp-bullets {
+            list-style: none;
+        }
+        
+        .exp-bullets li {
+            margin-bottom: var(--space-sm);
+            padding-left: var(--space-lg);
+            position: relative;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        .exp-bullets li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        /* ===== PROJECTS ===== */
+        .projects {
+            background: var(--bg-white);
+        }
+        
+        .projects > h2 {
+            color: var(--primary);
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
+        }
+        
+        .project-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: var(--space-lg);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-card:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+        
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .project-desc {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-md);
+            flex-grow: 1;
+            line-height: 1.7;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: var(--space-md);
+        }
+        
+        .tech-tag {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .project-link {
+            display: inline-block;
+            color: var(--accent);
+            font-weight: 600;
+            margin-top: var(--space-md);
+        }
+        
+        .project-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* ===== SKILLS ===== */
+        .skills {
+            background: var(--bg-light);
+        }
+        
+        .skills h2 {
+            color: var(--primary);
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
+        }
+        
+        .skill-group {
+            background: var(--bg-white);
+            padding: var(--space-lg);
+            border-radius: var(--radius);
+            border-top: 3px solid var(--secondary);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .skill-group h3 {
+            color: var(--secondary);
+            margin-bottom: var(--space-md);
+            font-size: 1.1rem;
+        }
+        
+        .skill-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+        
+        .skill-list li {
+            background: var(--accent);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        /* ===== CONTACT ===== */
+        .contact {
+            background: var(--bg-white);
+        }
+        
+        .contact h2 {
+            color: var(--primary);
+            text-align: center;
+        }
+        
+        .contact-content {
+            max-width: 600px;
+            margin: var(--space-lg) auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+        }
+        
+        .contact-info {
+            background: var(--bg-light);
+            padding: var(--space-lg);
+            border-radius: var(--radius);
+        }
+        
+        .contact-info h3 {
+            color: var(--accent);
+            margin-bottom: var(--space-md);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+        
+        .contact-item a {
+            color: var(--text-secondary);
+            word-break: break-all;
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            margin-bottom: var(--space-xs);
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            padding: var(--space-sm);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-family: var(--font-base);
+            font-size: 1rem;
+            transition: border 0.2s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-group button {
+            background: var(--accent);
+            color: white;
+            padding: var(--space-sm);
+            border: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .form-group button:hover {
+            background: #2563EB;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: var(--space-lg);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-md);
+        }
+        
+        .social-links a {
+            color: white;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        /* ===== MOBILE ===== */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.5rem; }
+            
+            .header-content {
+                flex-direction: column;
+                gap: var(--space-md);
+            }
+            
+            nav {
+                width: 100%;
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-md);
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .highlights {
+                grid-template-columns: 1fr;
+            }
+            
+            .exp-header {
+                flex-direction: column;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="header-content">
+            <div class="logo">pk</div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Prakash Kantumutchu</h1>
+            <p class="tagline">MLOps Specialist | AI/ML Architect | Production Systems Engineer</p>
+            <p style="color: rgba(255,255,255,0.85); font-size: 1.05rem; margin: var(--space-lg) auto 0;">
+                Building production-grade ML systems, LLM solutions, and cloud-native architectures.
+                <br>
+                7+ years driving measurable impact across AI, data, and infrastructure.
+            </p>
+            <div class="hero-cta">
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="https://github.com" class="btn btn-secondary" target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About</h2>
+                    <p>
+                        I design and ship production-grade AI, ML, and MLOps systems that solve real problems at scale. 
+                        Currently building reproducible ML pipelines and cloud-native architectures at <strong>Futurense Technologies</strong>.
+                    </p>
+                    <p>
+                        My background spans <strong>Aircraft Maintenance Engineering</strong> (Air India) → <strong>Machine Learning</strong> (Boven Technologies) → 
+                        <strong>MLOps & Generative AI</strong> (Futurense). This journey instilled discipline in systems thinking, 
+                        operational excellence, and reliability—principles I apply to every production system.
+                    </p>
+                    <p>
+                        I specialize in: <strong>MLOps architectures</strong>, <strong>LLM/RAG systems</strong>, <strong>distributed data pipelines</strong>, 
+                        <strong>Azure cloud</strong>, <strong>ML monitoring & observability</strong>, and <strong>team enablement</strong>.
+                    </p>
+                </div>
+                <div class="highlights">
+                    <div class="highlight">
+                        <div class="highlight-title">Current Role</div>
+                        <div class="highlight-value">MLOps Specialist</div>
+                        <div style="color: var(--text-secondary); margin-top: 0.5rem;">Futurense Technologies</div>
+                    </div>
+                    <div class="highlight">
+                        <div class="highlight-title">Experience</div>
+                        <div class="highlight-value">7+ Years</div>
+                        <div style="color: var(--text-secondary); margin-top: 0.5rem;">AI, ML, Cloud, Data</div>
+                    </div>
+                    <div class="highlight">
+                        <div class="highlight-title">Education</div>
+                        <div class="highlight-value">M.Tech</div>
+                        <div style="color: var(--text-secondary); margin-top: 0.5rem;">NIT Rourkela</div>
+                    </div>
+                    <div class="highlight">
+                        <div class="highlight-title">Location</div>
+                        <div class="highlight-value">India</div>
+                        <div style="color: var(--text-secondary); margin-top: 0.5rem;">Jalandhar, Punjab</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EXPERIENCE ===== -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <h2>Experience</h2>
+            <div class="exp-timeline">
+                
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title">MLOps Specialist</div>
+                            <div class="exp-company">Futurense Technologies, Noida, India</div>
+                        </div>
+                        <span class="exp-date">May 2025 - Present</span>
+                    </div>
+                    <ul class="exp-bullets">
+                        <li>Built reproducible ML pipelines using Airflow, MLflow, Docker, and Kubernetes—cutting onboarding time for learners and teams.</li>
+                        <li>Designed cloud-native ML architectures on Azure integrating Cognitive Services, Azure ML, Functions, API Management, and secure VNet deployments.</li>
+                        <li>Delivered LLM and GenAI capability-building using HuggingFace, LangChain, and Azure OpenAI.</li>
+                        <li>Drove end-to-end deployment frameworks with CI/CD pipelines and automated validation.</li>
+                    </ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title">AI/ML Engineer</div>
+                            <div class="exp-company">Boven Technologies, Bengaluru, India</div>
+                        </div>
+                        <span class="exp-date">Sep 2023 - May 2025</span>
+                    </div>
+                    <ul class="exp-bullets">
+                        <li>Delivered ML systems using TensorFlow, PyTorch, scikit-learn, and PySpark across classification, prediction, and NLP pipelines.</li>
+                        <li>Built and fine-tuned LLMs for summarization, Q&A, and internal automation—reducing manual workload for clients.</li>
+                        <li>Engineered MLflow-based lifecycle management with GitHub Actions and Docker for consistent builds, versioning, and rollback.</li>
+                        <li>Created interactive FastAPI and Streamlit apps for real-time model access and visualization.</li>
+                        <li>Implemented SHAP/LIME analysis frameworks to meet responsible-AI requirements.</li>
+                    </ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title">Aircraft Maintenance Engineer</div>
+                            <div class="exp-company">Air India Limited, Kolkata, India</div>
+                        </div>
+                        <span class="exp-date">Feb 2019 - May 2023</span>
+                    </div>
+                    <ul class="exp-bullets">
+                        <li>Performed scheduled and unscheduled maintenance on Airbus A320 aircraft, specializing in CFM56-5B engines, APUs, and hydraulic systems.</li>
+                        <li>Conducted inspections per DGCA and EASA standards, ensuring compliance and airworthiness.</li>
+                        <li>Authored diagnostic reports and coordinated technical documentation audits, enhancing operational efficiency.</li>
+                    </ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title">Assistant Professor</div>
+                            <div class="exp-company">Vitam College of Engineering, Visakhapatnam, India</div>
+                        </div>
+                        <span class="exp-date">May 2017 - Sep 2018</span>
+                    </div>
+                    <ul class="exp-bullets">
+                        <li>Mentored robotics teams, guiding interdisciplinary projects and fostering innovation.</li>
+                        <li>Served as Campus Recruitment Officer, coordinating industry outreach and student placements.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="project-grid">
+                
+                <!-- PROJECT 1 -->
+                <div class="project-card">
+                    <div class="project-title">Azure End-to-End Data Engineering + AI System</div>
+                    <p class="project-desc">
+                        Designed a production Medallion-architecture data pipeline (Bronze → Silver → Gold) enabling incremental, 
+                        metadata-driven ingestion and transformation with automated quality enforcement.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Azure Data Factory</span>
+                        <span class="tech-tag">ADLS Gen2</span>
+                        <span class="tech-tag">Databricks</span>
+                        <span class="tech-tag">Delta Lake</span>
+                        <span class="tech-tag">Synapse</span>
+                        <span class="tech-tag">Power BI</span>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--accent); font-weight: 500; margin: var(--space-md) 0 0;">
+                        → 60% reduction in manual engineering work through metadata automation
+                    </p>
+                    <a href="#" class="project-link">Read Full Project →</a>
+                </div>
+
+                <!-- PROJECT 2 -->
+                <div class="project-card">
+                    <div class="project-title">Full MLOps Pipeline: Azure + Airflow + MLflow + Kubernetes</div>
+                    <p class="project-desc">
+                        Architected a production-grade MLOps workflow integrating experiment tracking, data versioning, 
+                        orchestration, containerized deployment, and comprehensive monitoring with Prometheus + Grafana.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">MLflow</span>
+                        <span class="tech-tag">Airflow</span>
+                        <span class="tech-tag">DVC</span>
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">Prometheus</span>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--accent); font-weight: 500; margin: var(--space-md) 0 0;">
+                        → Blue-green deployments, drift monitoring, sub-100ms latency
+                    </p>
+                    <a href="#" class="project-link">Read Full Project →</a>
+                </div>
+
+                <!-- PROJECT 3 -->
+                <div class="project-card">
+                    <div class="project-title">Enterprise-Grade RAG System with LLMs</div>
+                    <p class="project-desc">
+                        Built a retrieval-augmented generation system leveraging Azure OpenAI, semantic search, 
+                        vector embeddings, Redis caching, and LLM-based reranking for low-latency, accurate retrieval at scale.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Azure OpenAI</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">Vector DB</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">Azure AD</span>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--accent); font-weight: 500; margin: var(--space-md) 0 0;">
+                        → Enterprise security, role-based access, production retrieval
+                    </p>
+                    <a href="#" class="project-link">Read Full Project →</a>
+                </div>
+
+                <!-- PROJECT 4 -->
+                <div class="project-card">
+                    <div class="project-title">ML Model Deployment & Monitoring Framework</div>
+                    <p class="project-desc">
+                        Engineered a complete ML lifecycle framework with Docker containerization, GitHub Actions CI/CD, 
+                        automated validation, and production-grade monitoring dashboards.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">GitHub Actions</span>
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">SHAP</span>
+                        <span class="tech-tag">Grafana</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--accent); font-weight: 500; margin: var(--space-md) 0 0;">
+                        → SHAP explainability, responsible AI, automated testing
+                    </p>
+                    <a href="#" class="project-link">Read Full Project →</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2>Technical Stack</h2>
+            <div class="skills-grid">
+                
+                <div class="skill-group">
+                    <h3>MLOps & Deployment</h3>
+                    <ul class="skill-list">
+                        <li>MLflow</li>
+                        <li>Airflow</li>
+                        <li>DVC</li>
+                        <li>Docker</li>
+                        <li>Kubernetes</li>
+                        <li>GitHub Actions</li>
+                        <li>CI/CD</li>
+                    </ul>
+                </div>
+
+                <div class="skill-group">
+                    <h3>Cloud & Infrastructure</h3>
+                    <ul class="skill-list">
+                        <li>Azure ML</li>
+                        <li>Azure Data Factory</li>
+                        <li>Azure Databricks</li>
+                        <li>Azure OpenAI</li>
+                        <li>Azure Functions</li>
+                        <li>VNet Security</li>
+                        <li>Key Vault</li>
+                    </ul>
+                </div>
+
+                <div class="skill-group">
+                    <h3>Generative AI & LLMs</h3>
+                    <ul class="skill-list">
+                        <li>LangChain</li>
+                        <li>HuggingFace</li>
+                        <li>Prompt Engineering</li>
+                        <li>RAG Systems</li>
+                        <li>Vector DBs</li>
+                        <li>Embeddings</li>
+                        <li>Fine-tuning</li>
+                    </ul>
+                </div>
+
+                <div class="skill-group">
+                    <h3>Machine Learning</h3>
+                    <ul class="skill-list">
+                        <li>TensorFlow</li>
+                        <li>PyTorch</li>
+                        <li>scikit-learn</li>
+                        <li>PySpark</li>
+                        <li>NLP</li>
+                        <li>spaCy</li>
+                        <li>Transformers</li>
+                    </ul>
+                </div>
+
+                <div class="skill-group">
+                    <h3>Data & Analytics</h3>
+                    <ul class="skill-list">
+                        <li>Python</li>
+                        <li>SQL</li>
+                        <li>Pandas</li>
+                        <li>NumPy</li>
+                        <li>Delta Lake</li>
+                        <li>Power BI</li>
+                        <li>Grafana</li>
+                    </ul>
+                </div>
+
+                <div class="skill-group">
+                    <h3>APIs & Frameworks</h3>
+                    <ul class="skill-list">
+                        <li>FastAPI</li>
+                        <li>Streamlit</li>
+                        <li>RESTful APIs</li>
+                        <li>Redis</li>
+                        <li>PostgreSQL</li>
+                        <li>Prometheus</li>
+                        <li>Logging</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form name="contact" method="POST" netlify>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h3>Connect</h3>
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <a href="mailto:k.prakashofficial@gmail.com">k.prakashofficial@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <a href="tel:+919330980131">+91-9330980131</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>💼</span>
+                        <a href="https://linkedin.com/in/prakashkantumutchu" target="_blank" rel="noopener">LinkedIn</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>🔗</span>
+                        <a href="https://github.com/prakashkantumutchu" target="_blank" rel="noopener">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/prakashkantumutchu" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://linkedin.com/in/prakashkantumutchu" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="mailto:k.prakashofficial@gmail.com">Email</a>
+            </div>
+            <p style="margin: 0; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                © 2026 Prakash Kantumutchu. Crafted with focus on clean code and measurable impact.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    link.classList.add('active');
+                    const target = document.querySelector(href);
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Set active nav on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 60) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Form submission handler
+        const form = document.querySelector('form[name="contact"]');
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                // Netlify forms handle this automatically
+                // This is just for additional client-side handling if needed
+            });
+        }
+    </script>
+</body>
+</html>

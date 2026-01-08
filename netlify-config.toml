@@ -1,0 +1,27 @@
+# netlify.toml
+# Netlify configuration for static site deployment
+
+[build]
+  publish = "."
+  command = "echo 'Static site - no build required'"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[context.production]
+  command = "echo 'Production build'"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self' 'unsafe-inline' fonts.googleapis.com fonts.gstatic.com; script-src 'self' 'unsafe-inline'"
+
+# Forms handling
+[form]
+  name = "contact"
